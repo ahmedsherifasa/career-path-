@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Career Path - اختار مجالك وابدأ رحلة التعلّم من خلال كورسات وروابط تعليمية مرتبة.">
+<title>Career Path | اختار مستقبلك</title>
+<style>
+:root{--blue:#1268d8;--navy:#102b58;--sky:#eaf5ff;--ink:#172b4d;--muted:#63738a;--white:#fff;--line:#e4edf7;--green:#19a974;--shadow:0 12px 35px rgba(23,64,115,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7fbff;color:var(--ink);line-height:1.7}
+a{color:inherit;text-decoration:none}.container{width:min(1120px,92%);margin:auto}
+header{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}.brand{display:flex;align-items:center;gap:11px;font-size:1.3rem;font-weight:900;color:var(--navy)}.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:white;background:linear-gradient(135deg,#1478f2,#53c5ff);font-size:1.15rem;box-shadow:0 7px 18px #1684df35}
+.navlinks{display:flex;align-items:center;gap:25px;color:#526681;font-size:.95rem}.navlinks a:hover{color:var(--blue)}.nav-cta,.primary{background:var(--blue);color:#fff!important;padding:11px 18px;border-radius:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer}
+.hero{padding:68px 0 48px;background:radial-gradient(circle at 90% 12%,#d9efff 0,transparent 31%),radial-gradient(circle at 8% 55%,#e7eaff 0,transparent 25%),linear-gradient(180deg,#fff,#f5faff)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:42px}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#e4f3ff;color:#1164c4;border-radius:99px;padding:7px 13px;font-size:.88rem;font-weight:700}.hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.2;margin:18px 0;color:var(--navy);letter-spacing:-1.3px}.hero h1 span{color:var(--blue)}.hero p{color:var(--muted);font-size:1.08rem;max-width:650px;margin:0 0 25px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.secondary{border:1px solid #cdddf0;background:#fff;color:var(--navy);padding:11px 18px;border-radius:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}.hero-note{font-size:.85rem!important;margin-top:16px!important}.hero-art{min-height:310px;border-radius:32px;background:linear-gradient(145deg,#d7eeff,#f5f8ff 55%,#dff8f0);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid #fff}.orbit{width:230px;height:230px;border:2px dashed #8bbff5;border-radius:50%;display:grid;place-items:center;position:relative}.book-stack{font-size:5.8rem;filter:drop-shadow(0 12px 9px #1e5b8c2b)}.float-card{position:absolute;background:white;border:1px solid #e2effc;padding:11px 14px;border-radius:16px;box-shadow:var(--shadow);font-size:.9rem;font-weight:700}.fc1{top:28px;right:22px}.fc2{bottom:31px;left:19px}.fc3{bottom:50px;right:20px;color:#11845b}.spark{position:absolute;color:#ffbe3d;font-size:2rem}.s1{top:76px;left:50px}.s2{right:65px;bottom:86px}
+.section{padding:54px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:25px}.section-head h2{margin:0;color:var(--navy);font-size:clamp(1.6rem,3vw,2.25rem)}.section-head p{margin:6px 0 0;color:var(--muted)}.searchbox{display:flex;align-items:center;gap:10px;background:white;border:1px solid var(--line);border-radius:14px;padding:0 14px;max-width:310px;width:100%}.searchbox input{width:100%;border:0;outline:0;padding:13px 0;font:inherit;background:transparent;color:var(--ink)}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 23px}.filter{border:1px solid #dce8f5;border-radius:99px;background:#fff;padding:9px 15px;color:#526681;font:inherit;cursor:pointer}.filter.active,.filter:hover{background:var(--navy);color:white;border-color:var(--navy)}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.course{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 5px 20px #12365c08;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}.course:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.course-top{padding:22px 22px 16px;background:linear-gradient(135deg,var(--tint),#fff);display:flex;align-items:center;justify-content:space-between}.course-icon{width:55px;height:55px;border-radius:17px;background:white;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 5px 16px #173d5c10}.level{font-size:.78rem;color:#48617e;background:#ffffffc9;border:1px solid #fff;padding:5px 10px;border-radius:99px}.course-body{padding:19px 22px 22px;display:flex;flex-direction:column;flex:1}.course h3{margin:0 0 8px;color:var(--navy);font-size:1.15rem}.course p{margin:0;color:var(--muted);font-size:.92rem;flex:1}.course-meta{display:flex;gap:13px;flex-wrap:wrap;color:#718198;font-size:.82rem;margin:15px 0}.course-link{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px 13px;background:#eaf4ff;color:#0f61c5;font-weight:800}.course-link:hover{background:var(--blue);color:white}.empty{display:none;padding:30px;text-align:center;color:var(--muted);background:white;border-radius:16px}
+.steps{background:#edf7ff}.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.step{padding:23px;background:#fff;border:1px solid #e0edf9;border-radius:18px}.step-num{width:40px;height:40px;display:grid;place-items:center;background:#e4f3ff;color:var(--blue);font-weight:900;border-radius:13px}.step h3{margin:12px 0 5px;color:var(--navy)}.step p{margin:0;color:var(--muted);font-size:.92rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.about-panel{background:white;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}.about-panel h3{margin-top:0;color:var(--navy)}.check{display:flex;gap:10px;align-items:flex-start;margin:13px 0;color:#50647e}.check span{color:var(--green);font-weight:900}
+footer{background:var(--navy);color:#d9e9ff;padding:28px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-brand{font-size:1.1rem;font-weight:900;color:#fff}.footer-small{font-size:.86rem;color:#b5c9e4}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-art{min-height:260px}.course-grid{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr}.navlinks{gap:13px}.navlinks a:not(.nav-cta){display:none}}
+@media(max-width:570px){.nav{min-height:66px}.brand{font-size:1.1rem}.brand-mark{width:37px;height:37px}.nav-cta{padding:9px 12px;font-size:.85rem}.hero{padding:43px 0 32px}.hero h1{font-size:2.35rem}.hero p{font-size:1rem}.hero-art{min-height:235px}.orbit{width:175px;height:175px}.book-stack{font-size:4.6rem}.fc1{top:15px;right:12px}.fc2{bottom:15px;left:10px}.fc3{bottom:40px;right:10px}.section{padding:38px 0}.section-head{align-items:stretch;flex-direction:column}.searchbox{max-width:none}.course-grid,.steps-grid{grid-template-columns:1fr}.course-top{padding:18px}.course-body{padding:17px 18px 19px}}
+.team-credit {
+  background: linear-gradient(135deg, #0d1b35, #1268d8);
+  color: #fff;
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 40px;
+  border-radius: 18px 18px 0 0;
+}
+
+.team-credit-content h2 {
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+
+.team-credit-content h3 {
+  font-size: 18px;
+  margin: 0 0 15px;
+  color: #dceaff;
+}
+
+.team-credit-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.team-credit-content .copyright {
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 15px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+<header>
+  
+<div class="container nav">
+  <a class="brand" href="#home" aria-label="Career Path الصفحة الرئيسية">
+    <span class="brand-mark">CP</span>
+    <span>Career Path</span>
+  </a>
+
+  <nav class="navlinks" aria-label="القائمة الرئيسية">
+    <a href="#courses" data-i18n="courses">المجالات والكورسات</a>
+    <a href="#how" data-i18n="how">إزاي تبدأ؟</a>
+    <a href="#about" data-i18n="about">عن المنصة</a>
+    <a class="nav-cta" href="#courses" data-i18n="startLearning">ابدأ التعلّم ←</a>
+    <button class="filter" id="languageToggle" type="button">English</button>
+  </nav>
+</div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow" data-i18n="heroBadge">✦ مستقبلك يبدأ بخطوة</span>
+
+      <h1>
+        <span data-i18n="heroTitle">اختار مجالك،</span><br>
+        <span data-i18n="heroSubtitle">واتعلّم خطوة بخطوة.</span>
+      </h1>
+
+      <p data-i18n="heroDescription">
+        منصة بسيطة تساعدك تكتشف مجالات مختلفة، وتوصل لكورسات مناسبة لمستواك، وتبدأ رحلتك التعليمية من غير تعقيد.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary" href="#courses">
+          <span data-i18n="discoverCourses">اكتشف الكورسات</span>
+          <span>←</span>
+        </a>
+        <a class="secondary" href="#how" data-i18n="learnHow">اعرف تبدأ إزاي</a>
+      </div>
+
+      <p class="hero-note" data-i18n="heroNote">
+        📚 روابط تعليمية مختارة — ابدأ من مستواك وبالسرعة المناسبة ليك.
+      </p>
+    </div>
+
+    <div class="hero-art" aria-label="رسم توضيحي للتعلم">
+      <span class="spark s1">✦</span>
+      <span class="spark s2">✧</span>
+      <div class="orbit"><div class="book-stack">📚</div></div>
+      <div class="float-card fc1" data-i18n="chooseGoal">🎯 اختار هدفك</div>
+      <div class="float-card fc2" data-i18n="newSkills">🧠 مهارات جديدة</div>
+      <div class="float-card fc3" data-i18n="keepLearning">✓ تعلّم باستمرار</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 data-i18n="chooseField">اختار المجال اللي يناسبك</h2>
+        <p data-i18n="chooseFieldDescription">ابدأ بكورس واحد، وبعدها انتقل للخطوة اللي بعدها.</p>
+      </div>
+      <label class="searchbox">
+        <span>⌕</span>
+        <input id="search" type="search"
+          placeholder="ابحث عن مجال أو كورس..."
+          data-i18n-placeholder="searchPlaceholder"
+          aria-label="ابحث عن مجال أو كورس">
+      </label>
+    </div>
+
+    <div class="filters" role="group" aria-label="فلترة الكورسات">
+      <button class="filter active" data-filter="all" data-i18n="allFields">كل المجالات</button>
+      <button class="filter" data-filter="computer" data-i18n="computer">تطوير استخدام الحاسب الآلي</button>
+      <button class="filter" data-filter="design" data-i18n="design">التصميم</button>
+      <button class="filter" data-filter="languages" data-i18n="languages">اللغات</button>
+      <button class="filter" data-filter="Cybersecurity" data-i18n="cybersecurity">الأمن السيبراني</button>
+      <button class="filter" data-filter="marketing" data-i18n="marketing">التسويق</button>
+    </div>
+
+    <div class="course-grid" id="courseGrid">
+
+      <article class="course" data-category="computer" data-search="تطوير استخدام الحاسب الآلي ICDL FDTC computer skills">
+        <div class="course-top" style="--tint:#e5f2ff">
+          <span class="course-icon">💻</span>
+          <span class="level" data-i18n="beginner">مبتدئ</span>
+        </div>
+        <div class="course-body">
+          <h3 data-i18n="computer">تطوير استخدام الحاسب الآلي</h3>
+          <p data-i18n="computerDescription">ابدأ رحلتك في التكنولوجيا والتدريس الرقمي مع كورسي ICDL وFTDC 💻🎓 أساسيات الكمبيوتر والأوفيس + مهارات التدريس الحديثة والتكنولوجيا في مكان واحد.</p>
+          <div class="course-meta">
+            <span data-i18n="digitalSkills">المهارات الرقمية 💻</span>
+            <span data-i18n="technicalSkills">تطوير مهاراتك التقنية 🚀</span>
+          </div>
+          <a class="course-link" href="courses.html?field=computer">
+            <span data-i18n="viewCourses">شوف الكورسات</span> <span>←</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="course" data-category="design" data-search="التصميم تصميم جرافيك مونتاج graphic design video editing">
+        <div class="course-top" style="--tint:#f2eaff">
+          <span class="course-icon">🎨</span>
+          <span class="level" data-i18n="beginner">مبتدئ</span>
+        </div>
+        <div class="course-body">
+          <h3 data-i18n="design">التصميم</h3>
+          <p data-i18n="designDescription">اكتشف عالم التصميم وتعلم تصميم الجرافيك ومونتاج الفيديو من خلال كورسات متخصصة.</p>
+          <div class="course-meta">
+            <span data-i18n="creativity">الإبداع والابتكار 🎨</span>
+            <span data-i18n="designVideo">التصميم وصناعة الفيديو 🎬</span>
+          </div>
+          <a class="course-link" href="courses.html?field=design">
+            <span data-i18n="viewCourses">شوف الكورسات</span> <span>←</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="course" data-category="languages" data-search="تعلم اللغات">
+        <div class="course-top" style="--tint:#fff1dc">
+          <span class="course-icon">🌐</span>
+          <span class="level" data-i18n="beginner">مبتدئ</span>
+        </div>
+        <div class="course-body">
+          <h3 data-i18n="languages">تعلم اللغات</h3>
+          <p data-i18n="languagesDescription">لغة جديدة = عالم جديد. طوّر مهاراتك وافتح لنفسك آفاقاً لا تنتهي🗺️.</p>
+          <div class="course-meta">
+            <span data-i18n="communication">تواصل بلا حدود 🗺️✈️</span>
+            <span data-i18n="languageSkills">تحدث بثقة واكتشف ثقافات جديدة ✨🗣️</span>
+          </div>
+          <a class="course-link" href="courses.html?field=languages">
+            <span data-i18n="viewCourses">شوف الكورسات</span> <span>←</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="course" data-category="marketing" data-search="التسويق الرقمي digital marketing سوشيال ميديا">
+        <div class="course-top" style="--tint:#ffe9ed">
+          <span class="course-icon">📣</span>
+          <span class="level" data-i18n="beginner">مبتدئ</span>
+        </div>
+        <div class="course-body">
+          <h3 data-i18n="marketing">التسويق الرقمي</h3>
+          <p data-i18n="marketingDescription">تعلم مبادئ الماركتينج بأسلوب عملي، افهم احتياج السوق، واعرف ازاي تصمم استراتيجية تسويقية تضمن لك التميز بين المنافسين📈.</p>
+          <div class="course-meta">
+            <span data-i18n="marketingMeta1">من الفكرة للمبيعات 💰📈</span>
+            <span data-i18n="marketingMeta2">التسويق هو سر النجاح! 📢🚀</span>
+          </div>
+          <a class="course-link" href="courses.html?field=marketing">
+            <span data-i18n="viewCourses">شوف الكورسات</span> <span>←</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="course" data-category="Cybersecurity" data-search="الأمن السيبراني">
+        <div class="course-top" style="--tint:#e6f6ff">
+          <span class="course-icon">🛡️</span>
+          <span class="level" data-i18n="beginner">مبتدئ</span>
+        </div>
+        <div class="course-body">
+          <h3 data-i18n="cybersecurity">الأمن السيبراني</h3>
+          <p data-i18n="cyberDescription">من حماية البيانات الشخصية إلى تأمين الشبكات الكبرى.. اكتشف الطرق العملية لحماية الأنظمة بثقة واحترافية.</p>
+          <div class="course-meta">
+            <span data-i18n="cyberMeta1">تأمين الشبكات والبيانات 🌐🔒</span>
+            <span data-i18n="cyberMeta2">الهكر الأخلاقي والحماية 🛡️💻</span>
+          </div>
+          <a class="course-link" href="courses.html?field=cybersecurity">
+            <span data-i18n="viewCourses">شوف الكورسات</span> <span>←</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="empty" id="empty" data-i18n="noResults">
+      ملقيناش نتائج مطابقة. جرّب كلمة بحث تانية.
+    </div>
+  </div>
+</section>
+
+
+<section class="section steps" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 data-i18n="stepsTitle">ابدأ رحلتك في 3 خطوات</h2>
+        <p data-i18n="stepsDescription">مش لازم تتعلم كل حاجة مرة واحدة.</p>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 data-i18n="step1Title">اختار مجال</h3>
+        <p data-i18n="step1Description">شوف المجالات المختلفة واختار المجال اللي حابب تستكشفه.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 data-i18n="step2Title">ابدأ بكورس للمبتدئين</h3>
+        <p data-i18n="step2Description">افتح روابط الكورسات وابدأ بالأساسيات قبل المحتوى المتقدم.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 data-i18n="step3Title">طبّق اللي اتعلمته</h3>
+        <p data-i18n="step3Description">اعمل مشروع صغير أو تمرين عملي عشان تثبّت المعلومة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about">
+    <div>
+      <span class="eyebrow" data-i18n="aboutTitle">عن Career Path</span>
+
+      <h2 data-i18n="aboutHeadline" style="font-size:clamp(1.7rem,3vw,2.5rem);color:var(--navy);line-height:1.35">
+        طريق أوضح للتعلّم واكتساب مهارات جديدة.
+      </h2>
+
+      <p style="color:var(--muted)">
+        <span data-i18n="aboutDescription">Career Path مشروع تعليمي هدفه مساعدة الطلاب وكل شخص حابب يطوّر نفسه على اكتشاف المجالات والوصول إلى مصادر تعلّم مناسبة بطريقة سهلة ومنظمة.</span>
+      </p>
+    </div>
+
+    <div class="about-panel">
+      <h3 data-i18n="whatYouFind">إيه اللي هتلاقيه هنا؟</h3>
+
+      <div class="check">
+        <span>✓</span>
+        <div data-i18n="about1">مجالات متنوعة في مكان واحد.</div>
+      </div>
+
+      <div class="check">
+        <span>✓</span>
+        <div data-i18n="about2">روابط بحث عن كورسات تعليمية مجانية ومتاحة على الإنترنت.</div>
+      </div>
+
+      <div class="check">
+        <span>✓</span>
+        <div data-i18n="about3">محتوى مرتب مناسب كبداية للمبتدئين.</div>
+      </div>
+
+      <div class="check">
+        <span>✓</span>
+        <div data-i18n="about4">تصميم بسيط يدعم الموبايل والكمبيوتر.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">Career Path</div>
+      <div class="footer-small" data-i18n="footerText">
+        اختار مستقبلك.. وتعلّم طريقك خطوة بخطوة.
+      </div>
+    </div>
+
+    <div class="footer-small" data-i18n="footerNote">
+      مشروع تعليمي — جميع روابط الكورسات تفتح في مواقع خارجية.
+    </div>
+
+    <a href="#home" style="color:white;font-weight:700" data-i18n="home">
+      الرئيسية ↑
+    </a>
+  </div>
+</footer>
+<section class="team-credit">
+<div class="team-credit-content">
+  <h2>Career Path</h2>
+  <h3 data-i18n="teamCredit">Developed by Info Hub Team</h3>
+ <p data-i18n="teamDescription">
+  A platform designed to help learners discover courses
+  and find suitable learning resources to develop their skills.
+</p>
+  <p class="copyright" data-i18n="teamRights">
+  All Rights Reserved © 2026 Info Hub Team
+</p>
+</div>
+</section>
+<script src="language.js"></script>
+<script>
+const searchInput=document.getElementById('search');
+const cards=[...document.querySelectorAll('.course')];
+const filters=[...document.querySelectorAll('.filter[data-filter]')];
+const empty=document.getElementById('empty');
+let active='all';
+function updateCourses(){
+  const q=searchInput.value.trim().toLocaleLowerCase('ar');
+  let count=0;
+  cards.forEach(card=>{
+    const matchesCategory=active==='all'||card.dataset.category===active;
+    const matchesText=(card.dataset.search+' '+card.innerText).toLocaleLowerCase('ar').includes(q);
+    const show=matchesCategory&&matchesText;
+    card.style.display=show?'flex':'none';
+    if(show)count++;
+  });
+  empty.style.display=count?'none':'block';
+}
+filters.forEach(btn=>btn.addEventListener('click',()=>{
+  active=btn.dataset.filter;
+  filters.forEach(b=>b.classList.toggle('active',b===btn));
+  updateCourses();
+}));
+searchInput.addEventListener('input',updateCourses);
+</script>
+</body>
+</html>

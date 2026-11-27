@@ -1,0 +1,1102 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الكورسات - Career Path</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f4f7fb;
+      color: #1e293b;
+    }
+
+    header {
+      background: #142d4e;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+      color: #dbeafe;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 30px auto;
+    }
+
+    .back {
+      display: inline-block;
+      color: #2563eb;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #64748b;
+      line-height: 1.8;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px #0f172a0d;
+      border: 1px solid #e2e8f0;
+    }
+
+    .course-card h3 {
+      color: #142d4e;
+      font-size: 23px;
+      margin: 0 0 10px;
+    }
+
+    .course-card p {
+      color: #64748b;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-weight: bold;
+      flex: 1;
+      min-width: 190px;
+      transition: 0.2s;
+    }
+
+    .places {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .online {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(0.97);
+    }
+
+    .notice {
+      background: #fff7ed;
+      color: #9a3412;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.8;
+      font-size: 14px;
+      margin-top: 25px;
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      padding: 25px 15px;
+    }
+
+    @media (max-width: 550px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      .course-card {
+        padding: 18px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+    .team-credit {
+  background: linear-gradient(135deg, #0d1b35, #1268d8);
+  color: #fff;
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 40px;
+  border-radius: 18px 18px 0 0;
+}
+
+.team-credit-content h2 {
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+
+.team-credit-content h3 {
+  font-size: 18px;
+  margin: 0 0 15px;
+  color: #dceaff;
+}
+
+.team-credit-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.team-credit-content .copyright {
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 15px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+  </style>
+</head>
+
+<body>
+
+  <header>
+  <h1>Career Path</h1>
+  <p data-i18n="choosePath">اختار طريقك وابدأ رحلة التعلم</p>
+  <button class="filter" id="languageToggle" type="button"
+    style="margin-top:15px; padding:8px 18px; cursor:pointer;">
+    English
+  </button>
+</header>
+
+  <main class="container">
+
+    <a class="back" href="index.html" data-i18n="backHome">→ الرجوع للصفحة الرئيسية</a>
+
+    <section class="intro">
+<h2 id="pageTitle" data-i18n="availableCourses">الكورسات المتاحة</h2>
+      <p data-i18n="courseIntro">
+  اختار المجال المناسب ليك، واكتشف أماكن التدريب
+  والكورسات المتاحة للتعلم أونلاين.
+</p>
+    </section>
+
+    <section id="courseList"></section>
+
+    <div class="notice" data-i18n="notice">
+  ملحوظة: روابط أماكن التدريب تفتح نتائج البحث على Google Maps،
+  وروابط التعلم أونلاين تفتح نتائج YouTube. راجع تفاصيل كل نتيجة
+  للتأكد من محتوى الكورس ومكان التدريب.
+</div>
+  </main>
+<script src="language.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const field = params.get("field") || "all";
+const lang = params.get("lang");
+
+const courses = {
+ 
+icdl: {
+  title: "ICDL",
+
+  places: [
+    {
+      name: "جامعة القاهرة",
+      nameEn: "Cairo University",
+      address: "1 شارع الجامعة، قسم الجيزة، محافظة الجيزة",
+      addressEn: "1 University Street, Giza District, Giza Governorate",
+      link: "https://maps.app.goo.gl/RHp5ooHqipsFk8Pw7"
+    },
+    {
+      name: "ETC.Egyptian Tecnology Center",
+      nameEn: "ETC Egyptian Technology Center",
+      address: " شارع مدكور، متفرع من شارع الهرم وشارع فيصل",
+      addressEn: "Madkour Street, off El Haram Street and Faisal Street",
+      link: "https://maps.app.goo.gl/wFAYcX1Vawp9FeeL7"
+    },
+    {
+      name: "IT Gate Academy",
+      nameEn: "IT Gate Academy",
+      address: " شارع أحمد حسني، متفرع من شارع الطيران، المنطقة الأولى، مدينة نصر، القاهرة",
+      addressEn: "Ahmed Hosny Street, off El Tayaran Street, First District, Nasr City, Cairo",
+      link: "https://maps.app.goo.gl/CamitVQXy6bqiWna9"
+    },
+    {
+      name: "معهد نظم معلومات القوات المسلحة",
+      nameEn: "Armed Forces Institute of Information Systems",
+      address: "شارع أحمد تيسير، متفرع من شارع الخليفة المأمون، هليوبوليس، مدينة نصر، القاهرة (بجوار الكلية الحربية).",
+      addressEn: "Ahmed Tayseer Street, off Khalifa El Maamoun Street, Heliopolis, Nasr City, Cairo (next to the Military Academy)",
+      link: "https://maps.app.goo.gl/xwmZCv6v7tZf5cus7"
+    },
+    {
+      name: "نادى تكنولوجيا المعلومات (فرع الدقي)",
+      nameEn: "Information Technology Club (Dokki Branch)",
+      address: "يقع بجوار مبنى رئاسة حي الدقي، بمنطقة بين السرايات، الدقي، الجيزة.",
+      addressEn: "Next to the Dokki District Headquarters, Bein El Sarayat, Dokki, Giza",
+      link: "https://maps.app.goo.gl/GfV7z4vRXQbezHuCA"
+    }
+  ],
+
+  videos: [
+    {
+  name: "شرح كامل لكورس ICDL",
+  nameEn: "Complete ICDL Course Explanation",
+  link: "https://youtu.be/3kjDExnUnRQ?si=0Kltw1grRo3Z4vk6"
+},
+   {
+  name: "كورس ICDL كامل مجاناً",
+  nameEn: "Complete ICDL Course for Free",
+  link: "https://youtu.be/sPBlDYVDjLU?si=cC5b6IqRRWmmHhAg"
+},
+    {
+  name: "كورس الرخصة الدولية لقيادة الحاسب الآلي ICDL مجاناً",
+  nameEn: "ICDL Full Course for Free",
+  link: "https://youtu.be/qLxDViZyhU4?si=P3VoL0hgCZEolK8m"
+},
+  ]
+},
+fdtc: {
+  title: "FDTC",
+  places: [
+    {
+      name: "مركز التحول الرقمي بكلية الصيدلة",
+      nameEn: "Digital Transformation Center, Faculty of Pharmacy",
+      address: "كلية الصيدلة جامعة القاهرة. شارع القصر العينى امام مستشفى ابو الريش ومن الجانب الاخر مستشفى الباطنة والفرنساوى",
+      addressEn: "Faculty of Pharmacy, Cairo University, El Qasr El Aini Street, opposite Abu El Reesh Hospital, near the Internal Medicine and French Hospitals",
+      link: "https://maps.app.goo.gl/3SJb9912ejU5jid77"
+    },
+    {
+      name: "وحدة التحول الرقمي - مركز الشبكات وتكنولوجيا المعلومات",
+      nameEn: "Digital Transformation Unit - Networks and Information Technology Center",
+      address: "مركز الشبكات وتكنولوجيا المعلومات، _جامعة عين شمس _ حرم 1 بجوار قصر الزعفران _ شارع الخليفة المأمون _العباسية _القاهرة.",
+      addressEn: "Networks and Information Technology Center, Ain Shams University, Campus 1, next to Zaafaran Palace, Khalifa El Maamoun Street, Abbassia, Cairo",
+      link: "https://maps.app.goo.gl/sDparL75baqY3TKn9"
+    },
+    {
+      name: "مركز التحول الرقمي",
+      nameEn: "Digital Transformation Center",
+      address: "مقر الجامعة المصرية الروسية بمدينة بدر, القاهرة-طريق السويس",
+      addressEn: "Egyptian Russian University Campus, Badr City, Cairo–Suez Road",
+      link: "https://maps.app.goo.gl/wYgDS2SGHB35pWcGA"
+    },
+    {
+      name: "مركز الإستشارات والبحوث والتطوير",
+      nameEn: "Center for Consultation, Research and Development",
+      address: "1 شارع أكاديمية السادات للعلوم الإدارية - مدخل المعادي1 - كورنيش النيل – القاهرة",
+      addressEn: "1 Sadat Academy for Management Sciences Street, Maadi 1 Entrance, Nile Corniche, Cairo",
+      link: "https://maps.app.goo.gl/jPRYNeMyA3a2qZuD7"
+    },
+    {
+      name: "مركز اللغات والتدريب",
+      nameEn: "Languages and Training Center",
+      address: "شارع جمال الدين الافغاني (شارع خاتم المرسلين) طريق الهرم -جيزة",
+      addressEn: "Gamal El Din El Afghani Street (Khatem El Morsaleen Street), El Haram Road, Giza",
+      link: "https://maps.app.goo.gl/EoFtfKy3aS4SdHLTA"
+    }
+  ],
+videos: [
+ {
+  name: "شهادة أساسايات التحول الرقمي ",
+  nameEn: "Digital Transformation Fundamentals Certificate",
+  link: "https://youtu.be/WAaFPC0dbcs?si=DwuJcNeCpfhaurMP"
+},
+ {
+  name: "التحول الرقمي اساسيات نظم المعلومات وانظمة التشغيل",
+  nameEn: "Digital Transformation: Information Systems Fundamentals and Operating Systems",
+  link: "https://youtu.be/iL9a_7zxxXs?si=_18Hb8EYFh2a8HF8"
+}
+]},
+ 
+marketing: {
+ title: "التسويق",
+titleEn: "Marketing",
+  places: [
+    {
+      name: "IMFND",
+      nameEn: "IMFND",
+      address: "عطية الصوالحي، المنطقة الثامنة، مدينة نصر، محافظة القاهرة",
+      addressEn: "Atteya El Sawalhy Street, Eighth District, Nasr City, Cairo Governorate",
+      link: "https://maps.app.goo.gl/D4QyJvM2zKS2uZS79"
+    },
+    {
+      name: "الأكاديمية العربية للعلوم و التكنولوجيا و النقل البحري",
+      nameEn: "Arab Academy for Science, Technology and Maritime Transport",
+      address: "23 شارع مصدق متفرع من شارع الدقي",
+       addressEn: "23 Mosadak Street, off El Dokki Street",
+      link: "https://maps.app.goo.gl/L7QG7KHxCuzTPtiU8"
+    },
+    {
+      name: "AUC",
+      nameEn: "AUC",
+      address: "شارع التسعين، الحرم الجامعي، قسم أول القاهرة الجديدة، محافظة القاهرة",
+     addressEn: "90th Street, University Campus, First Settlement, New Cairo, Cairo Governorate",
+      link: "https://maps.app.goo.gl/TN3q7wBMiLgHV5hs9"
+      },
+    {
+       name: "AD Ucation (ADucation Learn)",
+     nameEn: "AD Ucation (ADucation Learn)",
+  address: "٥ شارع طه حسين، هايكستب، النزهة، القاهرة",
+  addressEn: "5 Taha Hussein Street, Huckstep, El Nozha, Cairo",
+  link: "https://maps.app.goo.gl/TXP8FbFmFJv89bQL8"
+    },
+  ],
+
+  videos: [
+    {
+      name: "أساسيات التسويق",
+      nameEn: "Marketing Fundamentals",
+      link: "https://youtu.be/hy1UknJk1x0?si=GOxgqxKe6-BXDl3F"
+    },
+    {
+      name: "كورس التسويق المتكامل",
+      nameEn: "Complete Marketing Course",
+      link: "https://youtu.be/-mCrs593Un4?si=KzjaAPUKAIllUAbT"
+    },
+    {
+      name: "دورة التسويق الألكتروني الأحترافية",
+      nameEn: "Professional Digital Marketing Course",
+      link: "https://youtu.be/IMZ-yHJZLs4?si=EjFVccnkVJQuPNtU"
+      },
+    {
+       name: "Digital Marketing Full Course",
+      nameEn: "Digital Marketing Full Course",
+      link: "https://youtu.be/qnBhOVH1QQ8?si=vjiD4-LgPZ4SRt9h"
+    }
+  ]
+},
+
+  cybersecurity: {
+  title: "الأمن السيبراني",
+titleEn: "Cybersecurity",
+
+  places: [
+    {
+      name: "Array",
+      nameEn: "Array",
+      address: " شارع داوود حسني، المنطقة السادسة، مدينة نصر، محافظة القاهرة",
+      addressEn: "Dawoud Hosny Street, Sixth District, Nasr City, Cairo Governorate",
+      link: "https://maps.app.goo.gl/9sWsTzZHWyWHxWqK9"
+    },
+    {
+      name: "Instant",
+      nameEn: "Instant",
+      address: "شارع الموسيقار علي إسماعيل (متفرع من شارع التحرير)، الدقي، الجيزة",
+      addressEn: "Ali Ismail Street (off El Tahrir Street), Dokki, Giza",
+      link: "https://maps.app.goo.gl/JU1qv1uyqZYPZN9g6"
+      },
+     {
+  name: "Edux Technology",
+  nameEn: "Edux Technology",
+  address: "٢ شارع الجرجاوي، متفرع من شارع المساحة، الدقي، الجيزة، الدور الأرضي، مكتب ٣",
+  addressEn: "2 El Gergawy Street, off El Mesaha Street, Dokki, Giza, Ground Floor, Office 3",
+  link: "https://www.google.com/maps/search/?api=1&query=Edux+Technology+2+El+Gergawy+Dokki"
+
+},
+{
+   name: "STY IT",
+  nameEn: "STY IT",
+  address: "١٦ شارع محمود توفيق، مدينة نصر، القاهرة",
+  addressEn: "16 Mahmoud Tawfik Street, Nasr City, Cairo",
+  link: "https://www.google.com/maps/search/?api=1&query=STY+IT+16+Mahmoud+Tawfik+Street+Nasr+City"
+    }
+  ],
+
+  videos: [
+    {
+      name: "دورة أساسيات الأمن السيبراني",
+      nameEn: "Cybersecurity Fundamentals Course",
+      link: "https://youtu.be/VyXQ8CMIQl4?si=Ez4_dUbs6K0Rkhho"
+    },
+    {
+      name: "تعلم الأمن السيبراني من الصفر",
+      nameEn: "Learn Cybersecurity from Scratch",
+      link: "https://youtu.be/4DahisB3XB4?si=kvoWvbc6PKQxB4OG"
+        },
+    {
+      name: "Cyber Security Full course",
+      nameEn: "Cyber Security Full course",
+      link: "https://www.youtube.com/live/lpa8uy4DyMo?si=tNYXA6uut8RSI2Vp"
+       },
+    {
+      name: "Google Cybersecurity Certificate",
+      nameEn: "Google Cybersecurity Certificate",
+      link: "https://youtu.be/_DVVNOGYtmU?si=CLPTX8a4QUPy9RPy"
+    },
+  ]
+},
+ 
+
+
+languages: {
+  title: "اللغات",
+
+  languages: {
+    english: {
+      title: "اللغة الإنجليزية",
+      titleEn: "English Language",
+      places: [
+        {
+          name: "British Council ",
+          address: " شارع النيل، العجوزة، محافظة الجيزة",
+          addressEn: "Nile Street, Agouza, Giza Governorate",
+          link: "https://maps.app.goo.gl/UuyBWmQdewt9Rh9p9"
+        },
+        {
+          name: "The American University in Cairo",
+          address: "شارع التسعين، قسم أول القاهرة الجديدة، محافظة القاهرة",
+          addressEn: "90th Street, First Settlement, New Cairo, Cairo Governorate",
+          link: "https://maps.app.goo.gl/tdGfx8N393QDu87c6"
+        },
+        {
+          name: "LTS English Courses",
+          address: " شارع محمد يوسف موسى، من امتداد مصطفى النحاس (علي أمين) مدينة نصر",
+          addressEn: "Mohamed Youssef Moussa Street, extending from Mostafa El Nahas Street, Nasr City",
+          link: "https://maps.app.goo.gl/342cWzWqTp7unzzp6"
+        }
+      ],
+      videos: [
+        {
+          name: "z American English",
+          link: "https://youtube.com/@zamericanenglish?si=SqkHPlpi4lBs8M3n"
+        },
+        {
+          name: "English For You",
+          link: "https://youtube.com/@englishforyoutv?si=bou3ODgIWKtbCXi6"
+        }
+           ],
+    pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة الإنجليزية",
+    nameEn: "Practical Communication Guide in English",
+    link: "pdfs/English-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة الإنجليزية - شرح عربي",
+    nameEn: "English Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    },
+
+    german: {
+      title: "اللغة الألمانية",
+      titleEn: "German Language",
+      places: [
+        {
+          name: "ÄDK",
+          address: " شارع بيروت، كوربة، قسم مصر الجديدة، محافظة القاهرة",
+          addressEn: "Beirut Street, Korba, Heliopolis, Cairo Governorate",
+          link: "https://maps.app.goo.gl/4exD5Rk37DNjfVL97"
+        },
+        {
+          name: "Goethe Institut",
+          address: " شارع حسين واصف، الدقي، محافظة الجيزة",
+          addressEn: "Hussein Wassef Street, Dokki, Giza Governorate",
+          link: "https://maps.app.goo.gl/WrBqD7pyGwhNYTmo6"
+        },
+        {
+          name: "DKW Akademie",
+          address: " شارع أحمد حسني (متفرع من شارع الطيران)، المنطقة الأولى، مدينة نصر القاهرة",
+          addressEn: "Ahmed Hosny Street (off El Tayaran Street), First District, Nasr City, Cairo",
+          link: "https://maps.app.goo.gl/UanFcBoiqwpyuRt86"
+        }
+      ],
+      videos: [
+        {
+          name: "Learn German online Germantoon",
+          link: "https://youtube.com/@learngermanonlinegermantoo3754?si=KcmekXvHm4NdvXZp"
+        },
+        {
+          name: "Future Learning",
+          link: "https://youtube.com/@futurelearningch?si=9xI19h-qySwsszQS"
+        }
+            ],
+     pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة الألمانية",
+    nameEn: "Practical Communication Guide in German",
+    link: "pdfs/German-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة الألمانية - شرح عربي",
+    nameEn: "German Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    },
+
+    spanish: {
+      title: "اللغة الإسبانية",
+      titleEn: "Spanish Language",
+      places: [
+        {
+          name: "Instituto Cervantes",
+          address: "٢٠ شارع بولس حنا، الدقي، محافظة الجيزة",
+          addressEn: "20 Boulos Hanna Street, Dokki, Giza Governorate",
+          link: "https://maps.app.goo.gl/pLsbv27xAswpz9vFA"
+          },
+        {
+          name: "جامعة القاهرة",
+      nameEn: "Cairo University",
+      address: "1 شارع الجامعة، قسم الجيزة، محافظة الجيزة",
+      addressEn: "1 University Street, Giza District, Giza Governorate",
+      link: "https://maps.app.goo.gl/RHp5ooHqipsFk8Pw7" 
+        },
+      ],
+      videos: [
+        {
+          name: "Tu escuela de español",
+          link: "https://youtube.com/@tuescueladeespanoles?si=kFux1j6wJVpmE6f-"
+        },
+        {
+          name: "ProfeDeELE.es",
+          link: "https://youtube.com/@profedeelees?si=IUQppzmU2V43_ch8"
+        },
+        {
+          name: "Español con María",
+          link: "https://youtube.com/@espanolconmaria?si=ER3HN0rAxdhYRMPd"
+        }
+           ],
+   pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة الإسبانية",
+    nameEn: "Practical Communication Guide in Spanish",
+    link: "pdfs/Spanish-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة الإسبانية - شرح عربي",
+    nameEn: "Spanish Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    },
+
+    italian: {
+      title: "اللغة الإيطالية",
+      titleEn: "Italian Language",
+      places: [
+        {
+          name: "Italian Cultural Institute",
+          address: " شارع الشيخ المرصفي، الزمالك، محافظة القاهرة",
+          addressEn: "El Sheikh El Marsafy Street, Zamalek, Cairo Governorate",
+          link: "https://maps.app.goo.gl/UQiv2qi9r8Ko3fUS6"
+           },
+        {
+            name: "جامعة القاهرة",
+      nameEn: "Cairo University",
+      address: "1 شارع الجامعة، قسم الجيزة، محافظة الجيزة",
+      addressEn: "1 University Street, Giza District, Giza Governorate",
+      link: "https://maps.app.goo.gl/RHp5ooHqipsFk8Pw7" 
+        }
+      ],
+      videos: [
+        {
+          name: "Passione Italiana",
+          link: "https://youtube.com/@passioneitaliana?si=E4EsCWXYeHOFmBQf"
+        },
+        {
+          name: "Learn Italian with Lucrezia",
+          link: "https://youtube.com/@lucreziaoddone?si=K-gJywHflfDPPOfz"
+        },
+        {
+          name: "Easy Italian",
+          link: "https://youtube.com/@easyitalian?si=snLUlAQ7ydDTBmar"
+        }
+           ],
+      pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة الإيطالية",
+    nameEn: "Practical Communication Guide in Italian",
+    link: "pdfs/Italian-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة الإيطالية - شرح عربي",
+    nameEn: "Italian Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    },
+
+    french: {
+      title: "اللغة الفرنسية",
+      titleEn: "French Language",
+      places: [
+        {
+          name: "Institut Français d'Égypte au Caire",
+          address: " شارع مدرسة الحقوق الفرنسية، المنيرة، قسم السيدة زينب، القاهرة",
+          addressEn: "French School Street, El Mounira, Sayeda Zeinab, Cairo",
+          link: "https://maps.app.goo.gl/DNTmj72aYbKxFdYQ7"
+        },
+        {
+          name: "مركز باريس للغة الفرنسية والترجمة",
+          nameEn: "Paris Center for French Language and Translation",
+          address: "29 شارع سمير عبد الرؤوف، متفرع من شارع مكرم عبيد، المنطقة الثامنة، مدينة نصر القاهرة",
+          addressEn: "29 Samir Abdel Raouf Street, off Makram Ebeid Street, Eighth District, Nasr City, Cairo",
+          link: "https://maps.app.goo.gl/eYzbWecxFvpyZn7V6"
+        },
+        {
+          name: "Berlitz Language Center",
+          address: " ميدان الجزائر، المعادي، محافظة القاهرة",
+          addressEn: "Algeria Square, Maadi, Cairo Governorate",
+          link: "https://maps.app.goo.gl/w9yiUqffbmawrJpY7"
+        }
+      ],
+      videos: [
+        {
+          name: "Easy French",
+          link: "https://youtube.com/@easyfrench?si=urzS4UxybZ1K0OYK"
+        },
+        {
+          name: "Piece of French",
+          link: "https://youtube.com/@pieceoffrench?si=A21iKen5I0J1w6jc"
+        },
+        {
+          name: "French School TV",
+          link: "https://youtube.com/@frenchschooltv?si=hL61P-l0QLT0XR_k"
+        }
+            ],
+     pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة الفرنسية",
+    nameEn: "Practical Communication Guide in French",
+    link: "pdfs/French-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة الفرنسية - شرح عربي",
+    nameEn: "French Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    },
+
+    turkish: {
+      title: "اللغة التركية",
+      titleEn: "Turkish Language",
+      places: [
+        {
+          name: "مركز يونس أمرة للثقافة التركية",
+          nameEn: "Yunus Emre Institute",
+          address: "22 شارع البطل أحمد عبد العزيز (متفرع من شارع مصدق)، الدقي، محافظة الجيزة",
+          addressEn: "22 El Batal Ahmed Abdel Aziz Street (off Mosadak Street), Dokki, Giza Governorate",
+          link: "https://maps.app.goo.gl/vS4ezB6EtKDJY8Ry6"
+        },
+        {
+          name: "MODLI Cairo",
+          address: "شارع إسماعيل الفنجري، كوبري القبة، الوايلي، محافظة القاهرة",
+          addressEn: "Ismail El Fangary Street, Kobri El Qobba, El Waily, Cairo Governorate",
+          link: "https://maps.app.goo.gl/PYKZ1w9Hd5jpTq6Z6"
+        }
+      ],
+      videos: [
+        {
+          name: "Let's Practice Turkish",
+          link: "https://youtube.com/channel/UCmvkk_YRfHrMGGdw3ROK_hg?si=cWHBtwqbeeorpMgT"
+        },
+        {
+          name: "Yunus Emre Enstitüsü",
+          link: "https://youtube.com/@yeeorgtr?si=DOA--hXk4EUvIV8J"
+        }
+           ],
+     pdfs: [
+  {
+    name: "دليل التواصل العملي باللغة التركية",
+    nameEn: "Practical Communication Guide in Turkish",
+    link: "pdfs/Turkish-communication-guide.pdf"
+  },
+  {
+    name: "دليل التواصل العملي باللغة التركية - شرح عربي",
+    nameEn: "Turkish Communication Guide - Arabic Explanation",
+    link: "pdfs/Career-Path_Arabic_Cairo.pdf"
+  }
+]
+    }
+  }
+},
+
+ editing: {
+  title: "مونتاج",
+  titleEn: "Video Editing",
+
+  places: [
+  {
+    name: "AD Ucation (ADucation Learn)",
+     nameEn: "AD Ucation (ADucation Learn)",
+  address: "٥ شارع طه حسين، هايكستب، النزهة، القاهرة",
+  addressEn: "5 Taha Hussein Street, Huckstep, El Nozha, Cairo",
+  link: "https://maps.app.goo.gl/TXP8FbFmFJv89bQL8"
+  },
+  {
+    name: "Grand Notion",
+     nameEn: "Grand Notion",
+    address: "١٠١ شارع الفريق عبد المنعم رياض، المهندسين، محافظة الجيزة",
+    addressEn: "101 Abdel Moneim Riad Street, Mohandessin, Giza Governorate",
+    link: "https://maps.app.goo.gl/Jxwz3sygKd1HUBXt7"
+  }
+],
+
+  videos: [
+    {
+      name: "Premiere Basics",
+      link: "https://youtube.com/@premierebasics?si=_UL7hwWvabSartTh"
+    },
+    {
+      name: "Trevor Jones",
+      link: "https://youtube.com/@trevorjonescreator?si=zat7Go7m8CT80r4o"
+    },
+    {
+      name: "Content Creators",
+      link: "https://youtube.com/@mrpaulxavier?si=s_vM8L0F5Dj_6FM-"
+    },
+    {
+      name: "Envato",
+      link: "https://youtube.com/@envatotuts?si=VudBszqA0VgUYtL9"
+    },
+    {
+      name: "Peter McKinnon",
+      link: "https://youtube.com/@petermckinnon?si=9H-uD8nwtbwUHszK"
+    }
+  ]
+},
+ graphic: {
+  title: "تصميم جرافيك",
+  titleEn: "Graphic Design",
+
+  places: [
+    {
+      name: "Graphic School",
+      nameEn: "Graphic School",
+      address: "شارع العروبة، صقر قريش، المعادي الجديدة، محافظة القاهرة",
+      addressEn: "Al Orouba Street, Saqr Quraish, New Maadi, Cairo Governorate",
+      link: "https://maps.app.goo.gl/tJ6YPockQmvSF2ge6"
+    },
+    {
+      name: "مؤسسة كيان",
+      nameEn: "Kayan Foundation",
+      address: "تقع في المنطقة السادسة، بمدينة نصر، محافظة القاهرة",
+      addressEn: "Sixth District, Nasr City, Cairo Governorate",
+      link: "https://maps.app.goo.gl/VLiWKC4iPcx2NL3n7"
+    },
+    {
+      name: "AD Ucation (ADucation Learn)",
+     nameEn: "AD Ucation (ADucation Learn)",
+   address: "٥ شارع طه حسين، هايكستب، النزهة، القاهرة",
+  addressEn: "5 Taha Hussein Street, Huckstep, El Nozha, Cairo",
+  link: "https://maps.app.goo.gl/TXP8FbFmFJv89bQL8"
+      },
+    {
+      name: "Grand Notion",
+     nameEn: "Grand Notion",
+    address: "١٠١ شارع الفريق عبد المنعم رياض، المهندسين، محافظة الجيزة",
+    addressEn: "101 Abdel Moneim Riad Street, Mohandessin, Giza Governorate",
+    link: "https://maps.app.goo.gl/Jxwz3sygKd1HUBXt7"
+    }
+  ],
+
+  videos: [
+    {
+      name: "Gareth David Studio",
+      link: "https://youtube.com/@garethdavidstudio?si=aq8DEX5R_JcY_TMO"
+    },
+    {
+      name: "Will Paterson",
+      link: "https://youtube.com/@willpatersondesign?si=9XYmUs3Fm8F76olx"
+    },
+    {
+      name: "Abi Connick",
+      link: "https://youtube.com/@abiconnick?si=OuUIca_6PP86OKwe"
+    },
+    {
+      name: "Nour Design",
+      link: "https://youtube.com/@nourdesign?si=g1xRvbdNTDW7fT-o"
+    },
+    {
+      name: "mostafa makram TV",
+      link: "https://youtube.com/@mostafamakram?si=nluyKgLrDkOzklat"
+        }
+      ]
+    }
+  }
+
+
+const list = document.getElementById("courseList");
+const pageTitle = document.getElementById("pageTitle");
+
+function makeLink(text, url, className) {
+  const a = document.createElement("a");
+  a.className = "btn " + className;
+  a.textContent = text;
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  return a;
+}
+function showComputerOptions() {
+  pageTitle.textContent = t("computerTitle");
+
+  const options = [
+    {
+      title: t("icdlCourse"),
+      description: t("icdlDescription"),
+      field: "icdl"
+    },
+    {
+      title: t("fdtcCourse"),
+      description: t("fdtcDescription"),
+      field: "fdtc"
+    }
+  ];
+
+  options.forEach(option => {
+    const card = document.createElement("article");
+    card.className = "course-card";
+
+    const title = document.createElement("h3");
+    title.textContent = option.title;
+
+    const description = document.createElement("p");
+    description.textContent = option.description;
+
+    const button = document.createElement("a");
+    button.className = "btn online";
+    button.textContent = t("chooseCourse");
+    button.href = "courses.html?field=" + option.field;
+
+    card.append(title, description, button);
+    list.appendChild(card);
+  });
+}
+function showDesignOptions() {
+  pageTitle.textContent = t("designTitle");
+
+  const options = [
+    {
+      title: t("graphicCourse"),
+      description: t("graphicDescription"),
+      field: "graphic"
+    },
+    {
+      title: t("editingCourse"),
+      description: t("editingDescription"),
+      field: "editing"
+    }
+  ];
+
+  options.forEach(option => {
+    const card = document.createElement("article");
+    card.className = "course-card";
+
+    const title = document.createElement("h3");
+    title.textContent = option.title;
+
+    const description = document.createElement("p");
+    description.textContent = option.description;
+
+    const button = document.createElement("a");
+    button.className = "btn online";
+    button.textContent = t("chooseCourse");
+    button.href = "courses.html?field=" + option.field;
+
+    card.append(title, description, button);
+    list.appendChild(card);
+  });
+}
+function showLanguages() {
+  pageTitle.textContent = t("chooseLanguageTitle");
+
+  const languageNames = {
+    english: getCurrentLanguage() === "ar" ? "اللغة الإنجليزية" : "English",
+    german: getCurrentLanguage() === "ar" ? "اللغة الألمانية" : "German",
+    spanish: getCurrentLanguage() === "ar" ? "اللغة الإسبانية" : "Spanish",
+    italian: getCurrentLanguage() === "ar" ? "اللغة الإيطالية" : "Italian",
+    french: getCurrentLanguage() === "ar" ? "اللغة الفرنسية" : "French",
+    turkish: getCurrentLanguage() === "ar" ? "اللغة التركية" : "Turkish"
+  };
+
+  Object.entries(courses.languages.languages).forEach(([key, language]) => {
+    const card = document.createElement("article");
+    card.className = "course-card";
+
+    const title = document.createElement("h3");
+    title.textContent = languageNames[key] || language.title;
+
+    const button = document.createElement("a");
+    button.className = "btn online";
+    button.textContent = t("chooseLanguage");
+    button.href = "courses.html?field=languages&lang=" + key;
+
+    card.append(title, button);
+    list.appendChild(card);
+  });
+}
+
+function showCourse(course) {
+  const card = document.createElement("article");
+  card.className = "course-card";
+
+  const title = document.createElement("h3");
+  title.textContent = getCurrentLanguage() === "en"
+  ? (course.titleEn || course.title)
+  : course.title;
+  card.appendChild(title);
+
+  const placesTitle = document.createElement("h4");
+  placesTitle.textContent = t("trainingPlaces");
+  card.appendChild(placesTitle);
+
+  if (!course.places.length) {
+    const message = document.createElement("p");
+    message.textContent = t("noPlaces");
+    card.appendChild(message);
+  }
+
+  course.places.forEach(place => {
+    const p = document.createElement("p");
+    const placeAddress = getCurrentLanguage() === "en"
+  ? (place.addressEn || place.address)
+  : place.address;
+
+const placeName = getCurrentLanguage() === "en"
+  ? (place.nameEn || place.name)
+  : place.name;
+
+p.textContent = placeName +
+  (placeAddress ? " — " + placeAddress : "");
+card.appendChild(p);
+
+if (place.link) {
+  card.appendChild(makeLink(t("viewPlace"), place.link, "places"));
+}
+  });
+
+  const videosTitle = document.createElement("h4");
+  videosTitle.textContent = t("onlineCourses");
+  card.appendChild(videosTitle);
+
+  if (!course.videos.length) {
+    const message = document.createElement("p");
+    message.textContent = t("noVideos");
+    card.appendChild(message);
+  }
+
+  course.videos.forEach(video => {
+  const videoName = getCurrentLanguage() === "en"
+    ? (video.nameEn || video.name)
+    : video.name;
+
+  card.appendChild(makeLink(videoName, video.link, "online"));
+});
+ if (field === "languages") {
+  const pdfsTitle = document.createElement("h4");
+  pdfsTitle.textContent = t("scientificMaterial");
+  card.appendChild(pdfsTitle);
+}
+
+  (course.pdfs || []).forEach(pdf => {
+    const pdfName = getCurrentLanguage() === "en"
+      ? (pdf.nameEn || pdf.name)
+      : pdf.name;
+
+    card.appendChild(makeLink(pdfName, pdf.link, "online"));
+  });
+
+  if (field === "languages" || field === "graphic" || field === "editing" || field === "icdl" || field === "fdtc") {
+    const back = document.createElement("a");
+    back.className = "back";
+
+    if (field === "languages") {
+      back.href = "courses.html?field=languages";
+      back.textContent = t("backLanguages");
+
+    } else if (field === "graphic" || field === "editing") {
+      back.href = "courses.html?field=design";
+      back.textContent = t("backCourseOptions");
+
+    } else {
+      back.href = "courses.html?field=computer";
+      back.textContent = t("backCourseOptions");
+    }
+
+    card.appendChild(back);
+  }
+
+  list.appendChild(card);
+}
+
+
+function renderPage() {
+  list.innerHTML = "";
+
+  if (field === "computer") {
+    showComputerOptions();
+
+  } else if (field === "design") {
+    showDesignOptions();
+
+  } else if (field === "languages" && !lang) {
+    showLanguages();
+
+  } else if (field === "languages" && courses.languages.languages[lang]) {
+pageTitle.textContent = getCurrentLanguage() === "en"
+  ? (courses.languages.languages[lang].titleEn || courses.languages.languages[lang].title)
+  : courses.languages.languages[lang].title;
+    showCourse(courses.languages.languages[lang]);
+
+  } else if (courses[field] && field !== "languages") {
+    pageTitle.textContent = getCurrentLanguage() === "en"
+  ? (courses[field].titleEn || courses[field].title)
+  : courses[field].title;
+    showCourse(courses[field]);
+
+  } else {
+    pageTitle.textContent = t("allCourses");
+
+    Object.entries(courses).forEach(([key, course]) => {
+      if (key !== "languages") showCourse(course);
+    });
+  }
+}
+
+window.refreshCourseLanguage = renderPage;
+
+renderPage();
+</script>
+<section class="team-credit">
+  <div class="team-credit-content">
+    <h2>Career Path</h2>
+    <h3 data-i18n="teamCredit">Developed by Info Hub Team</h3>
+    <p data-i18n="teamDescription">
+      An educational platform that helps students and lifelong learners explore different fields and find suitable learning resources.
+    </p>
+    <p class="copyright" data-i18n="teamRights">
+      All Rights Reserved © 2026 Info Hub Team
+    </p>
+  </div>
+</section>
